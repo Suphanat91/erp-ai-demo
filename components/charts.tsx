@@ -4,7 +4,7 @@ import { useState } from "react";
 
 type Series = { key: string; label: string; color: string };
 
-// กราฟแท่งซ้อน (Stacked bar) แบบ SVG ไม่ต้องใช้ไลบรารีเพิ่ม
+// Stacked bar chart in plain SVG (no chart library needed)
 export function StackedBars<T extends Record<string, number | string>>({
   data, xKey, series, unit = "",
 }: { data: T[]; xKey: keyof T; series: Series[]; unit?: string }) {
@@ -71,7 +71,7 @@ export function StackedBars<T extends Record<string, number | string>>({
   );
 }
 
-// กราฟโดนัท
+// Donut chart
 export function Donut({ items, center }: { items: { label: string; value: number; color: string }[]; center?: React.ReactNode }) {
   const total = items.reduce((s, i) => s + i.value, 0);
   const R = 40, C = 2 * Math.PI * R;
@@ -106,7 +106,7 @@ export function Donut({ items, center }: { items: { label: string; value: number
   );
 }
 
-// กราฟเส้นเล็ก (Sparkline / Area)
+// Small area line chart (sparkline)
 export function AreaLine({ values, color = "#6366f1", height = 120, labels }: { values: number[]; color?: string; height?: number; labels?: string[] }) {
   const max = Math.max(...values) * 1.1, min = Math.min(...values) * 0.9;
   const pts = values.map((v, i) => [(i / (values.length - 1)) * 100, 100 - ((v - min) / (max - min)) * 100]);

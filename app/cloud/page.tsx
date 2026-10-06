@@ -14,7 +14,7 @@ export default function CloudPage() {
   const [toast, setToast] = useState<string | null>(null);
   const [tick, setTick] = useState(0);
 
-  // จำลองค่า CPU แบบเรียลไทม์
+  // Simulate live CPU usage
   useEffect(() => {
     const t = setInterval(() => {
       setTick((x) => x + 1);

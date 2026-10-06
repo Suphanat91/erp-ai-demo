@@ -1,38 +1,70 @@
-# NexERP AI — Demo ระบบ ERP สำหรับธุรกิจซอฟต์แวร์ / AI / Hardware / Cloud
+# NexERP AI — ERP Demo for Software, AI, Hardware & Cloud Businesses
 
-ระบบสาธิต (Demo) สำหรับนำเสนอลูกค้า สร้างด้วย **Next.js 15 + Tailwind CSS 4** แบบ Static Export (ไม่ต้องมี Backend)
-ข้อมูลทั้งหมดเป็นข้อมูลจำลอง
+A sales demo of an AI-powered ERP system, built for companies that develop software and AI applications, sell packaged software and hardware, and offer on-cloud services.
 
-## โมดูลในระบบ
-| เมนู | ความสามารถ |
+Built with **Next.js 15 + Tailwind CSS 4** as a fully static export: no backend or database required. All data is mock data, and changes made in the UI reset on page reload.
+
+**Live demo:** https://suphanat91.github.io/erp-ai-demo/
+
+> The user interface is in Thai, as the demo targets Thai customers.
+
+## Modules
+
+| Module | Features |
 |---|---|
-| ภาพรวม (Dashboard) | KPI, กราฟรายได้แยกธุรกิจ, AI Insight, งานเร่งด่วน |
-| AI ผู้ช่วยอัจฉริยะ | Chat ถาม-ตอบข้อมูลธุรกิจภาษาไทย (สรุปยอดขาย, พยากรณ์, ลูกหนี้, ความเสี่ยง) |
-| CRM & การขาย | Kanban Pipeline (ลากวางได้), AI Lead Score, เพิ่มลูกค้าเป้าหมาย |
-| โครงการพัฒนาซอฟต์แวร์ | Gantt Timeline, ความคืบหน้า/งบประมาณ, AI เตือนความเสี่ยง |
-| สินค้า & คลัง | ซอฟต์แวร์สำเร็จรูป / Hardware / Cloud / บริการ, สร้างใบเสนอราคา + VAT |
-| Cloud & Subscription | Monitoring เซิร์ฟเวอร์แบบ Live, MRR/ARR, แพ็กเกจ SaaS |
-| บัญชี & ใบแจ้งหนี้ | ออกใบแจ้งหนี้, รับชำระ, ทวงถาม, AI พยากรณ์กระแสเงินสด |
-| บุคลากร & ทรัพยากร | Utilization รายคน/แผนก, ทักษะทีม, AI แนะนำจัดสรรงาน |
-| Helpdesk / Support | Ticket หลายช่องทาง, SLA, AI แนะนำวิธีแก้ไข |
+| Dashboard | KPIs, revenue by business line, daily AI insight, action items |
+| AI Assistant | Chat with business data in Thai: sales summary, forecasts, overdue receivables, project risk (scripted responses) |
+| CRM & Sales | Drag-and-drop Kanban pipeline, AI lead scoring, add new leads |
+| Projects | Gantt timeline, progress vs. budget burn, AI risk alerts |
+| Products & Inventory | Packaged software, hardware, cloud plans and services; quotation builder with VAT |
+| Cloud & Subscriptions | Live server monitoring, MRR/ARR, SaaS subscriptions |
+| Finance & Invoices | Create invoices, record payments, send reminders, AI cash-flow forecast |
+| HR & Resources | Utilization by person and department, team skills, AI staffing suggestions |
+| Helpdesk / Support | Multi-channel tickets, SLA tracking, AI-suggested resolutions |
 
-## รันบนเครื่อง
+## Getting Started
+
 ```bash
 npm install
-npm run dev        # เปิด http://localhost:3000
+npm run dev        # http://localhost:3000
 ```
 
-## Deploy ขึ้น GitHub Pages (ฟรี)
-1. สร้าง Repository ใหม่บน GitHub (เช่น `erp-ai-demo`)
-2. Push โค้ดขึ้นไป
-   ```bash
-   git remote add origin https://github.com/<username>/erp-ai-demo.git
-   git push -u origin main
-   ```
-3. ไปที่ **Settings → Pages → Build and deployment → Source** เลือก **GitHub Actions**
-4. รอ Action ทำงานเสร็จ (~1-2 นาที) จะได้ลิงก์ `https://<username>.github.io/erp-ai-demo/`
+Build the static site into `out/`:
 
-> ถ้าตั้งชื่อ Repository เป็น `<username>.github.io` ให้ลบบรรทัด `BASE_PATH` ใน `.github/workflows/deploy.yml`
+```bash
+npm run build
+```
 
-## Deploy ขึ้น Vercel (ทางเลือก)
-Import Repository ที่ https://vercel.com/new แล้วกด Deploy ได้เลย ไม่ต้องตั้งค่าเพิ่ม
+## Project Structure
+
+```
+app/            Pages (one folder per module)
+components/     Layout shell, UI primitives, SVG charts
+lib/data.ts     Mock data and formatters
+.github/        GitHub Pages deploy workflow
+```
+
+## Deployment
+
+### GitHub Pages
+
+Every push to `main` builds and deploys the site through GitHub Actions (`.github/workflows/deploy.yml`).
+
+To set it up in a new repository:
+
+1. Push the code to GitHub.
+2. Go to **Settings → Pages → Build and deployment → Source** and choose **GitHub Actions**.
+3. The site will be available at `https://<username>.github.io/<repo-name>/`.
+
+If the repository is named `<username>.github.io`, remove the `BASE_PATH` line from the workflow.
+
+### Vercel
+
+Import the repository at https://vercel.com/new and deploy. No extra configuration is needed.
+
+## Customization
+
+- Company name and all mock data: `lib/data.ts`
+- Product name, logo and navigation: `components/Shell.tsx`
+- Font: `app/layout.tsx` (Prompt via `next/font/google`)
+- Brand colors: `app/globals.css`

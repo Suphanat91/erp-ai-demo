@@ -1,4 +1,4 @@
-// ข้อมูลจำลองสำหรับ Demo — บริษัทพัฒนาซอฟต์แวร์ / AI / ERP / Hardware / Cloud
+// Mock data for the demo: software development / AI / ERP / hardware / cloud business
 
 export const company = {
   name: "บริษัท เน็กซ์เทค โซลูชั่นส์ จำกัด",
