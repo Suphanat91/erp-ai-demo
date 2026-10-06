@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans Thai", "Noto Sans Thai", system-ui, sans-serif;
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+}
+
+body {
+  background: #f5f6fa;
+  color: #0f172a;
+}
+
+.card {
+  @apply rounded-2xl bg-white border border-slate-200/70 shadow-[0_1px_2px_rgba(15,23,42,0.04)];
+}
+
+.btn {
+  @apply inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-medium transition cursor-pointer;
+}
+.btn-primary {
+  @apply bg-brand-600 text-white hover:bg-brand-700;
+}
+.btn-ghost {
+  @apply bg-white border border-slate-200 text-slate-700 hover:bg-slate-50;
+}
+
+.table-base {
+  @apply w-full text-sm;
+}
+.table-base th {
+  @apply text-left font-medium text-slate-500 px-4 py-3 bg-slate-50 whitespace-nowrap;
+}
+.table-base td {
+  @apply px-4 py-3 border-t border-slate-100 whitespace-nowrap;
+}
+.table-base tbody tr:hover {
+  @apply bg-slate-50/70;
+}
+
+.input {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm outline-none focus:border-brand-500 focus:ring-2 focus:ring-brand-100;
+}
+
+@keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.fade-in { animation: fadein .3s ease-out; }
